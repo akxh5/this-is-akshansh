@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Twitter, Github, Linkedin, MessageCircle, Mail } from 'lucide-react';
+import { Twitter, Github, Linkedin, Mail } from 'lucide-react';
 
 export const About: React.FC = () => {
   const socials = [
@@ -23,10 +23,14 @@ export const About: React.FC = () => {
       bgColor: 'hover:bg-blue-50 dark:hover:bg-blue-900/30'
     },
     { 
-      icon: MessageCircle, 
-      href: '#', 
-      color: 'hover:text-indigo-500',
-      bgColor: 'hover:bg-indigo-50 dark:hover:bg-indigo-900/30'
+      icon: () => (
+        <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75S24 8.83 24 12z"/>
+        </svg>
+      ), 
+      href: 'https://medium.com/@aksh11ansh', 
+      color: 'hover:text-green-600',
+      bgColor: 'hover:bg-green-50 dark:hover:bg-green-900/30'
     },
     { 
       icon: Mail, 
@@ -173,7 +177,11 @@ export const About: React.FC = () => {
               viewport={{ once: true }}
               whileHover={{ y: -4, scale: 1.1 }}
             >
-              <social.icon className="w-6 h-6 text-gray-700 dark:text-gray-200 transition-colors duration-300" />
+              {typeof social.icon === 'function' ? (
+                <social.icon />
+              ) : (
+                <social.icon className="w-6 h-6 text-gray-700 dark:text-gray-200 transition-colors duration-300" />
+              )}
             </motion.a>
           ))}
         </motion.div>
