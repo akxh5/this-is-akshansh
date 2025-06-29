@@ -268,34 +268,6 @@ export const Poetry: React.FC = () => {
             Refresh for new wisdom
           </motion.p>
         </motion.div>
-
-        {/* Enhanced Floating Wisdom Symbols */}
-        <div className="absolute inset-0 pointer-events-none">
-          {['✨', '🌟', '💫', '⭐'].map((symbol, i) => (
-            <motion.div
-              key={`symbol-${i}`}
-              className="absolute text-2xl opacity-20"
-              style={{
-                left: `${20 + i * 20}%`,
-                top: `${30 + (i % 2) * 40}%`
-              }}
-              animate={{
-                y: [-12, 12, -12],
-                rotate: [0, 360],
-                opacity: [0.2, 0.6, 0.2],
-                scale: [1, 1.3, 1]
-              }}
-              transition={{
-                duration: 8 + i * 1.5,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: i * 0.8
-              }}
-            >
-              {symbol}
-            </motion.div>
-          ))}
-        </div>
       </motion.div>
     </section>
   );

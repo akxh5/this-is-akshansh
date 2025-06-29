@@ -212,34 +212,6 @@ export const Contact: React.FC = () => {
             </motion.button>
           </form>
         </motion.div>
-
-        {/* Floating Success Indicators */}
-        <div className="absolute inset-0 pointer-events-none">
-          {['💌', '✨', '🚀'].map((emoji, i) => (
-            <motion.div
-              key={`success-${i}`}
-              className="absolute text-3xl opacity-20"
-              style={{
-                left: `${30 + i * 20}%`,
-                top: `${20 + i * 15}%`
-              }}
-              animate={{
-                y: [-15, 15, -15],
-                rotate: [0, 10, -10, 0],
-                opacity: [0.2, 0.5, 0.2],
-                scale: [1, 1.2, 1]
-              }}
-              transition={{
-                duration: 6 + i * 2,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: i * 1.5
-              }}
-            >
-              {emoji}
-            </motion.div>
-          ))}
-        </div>
       </div>
     </section>
   );

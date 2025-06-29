@@ -285,30 +285,6 @@ export const Skills: React.FC = () => {
           >
             Always learning, always evolving
           </motion.p>
-          
-          {/* Subtle Sparkles */}
-          <div className="absolute inset-0 pointer-events-none">
-            {[...Array(3)].map((_, i) => (
-              <motion.div
-                key={`sparkle-${i}`}
-                className="absolute w-1 h-1 bg-purple-400 rounded-full"
-                style={{
-                  left: `${30 + i * 20}%`,
-                  top: '50%'
-                }}
-                animate={{
-                  opacity: [0, 1, 0],
-                  scale: [0, 1, 0]
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  delay: i * 0.7,
-                  ease: "easeInOut"
-                }}
-              />
-            ))}
-          </div>
         </motion.div>
       </div>
     </section>
