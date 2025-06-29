@@ -34,7 +34,7 @@ export const Hero: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          Superteam India Member · Research @Solana Turbin3 · Building @syn8x, DDDAS, and poetic web experiences.
+          Superteam India Member · Research @Solana Turbin3 · Building @syn8x.tech
         </motion.p>
 
         <motion.button
