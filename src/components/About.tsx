@@ -9,13 +9,14 @@ export const About: React.FC = () => {
         <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
           <path 
             d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
-            className="text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors duration-300"
+            className="text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors duration-200"
           />
         </svg>
       ), 
       href: 'https://x.com/akxh_5', 
       color: 'hover:text-black dark:hover:text-white',
       bgColor: 'hover:bg-gray-50 dark:hover:bg-gray-700/50',
+      glowColor: 'rgba(0, 0, 0, 0.3)',
       name: 'X (Twitter)'
     },
     { 
@@ -23,6 +24,7 @@ export const About: React.FC = () => {
       href: 'https://github.com/akxh5', 
       color: 'hover:text-gray-800 dark:hover:text-white',
       bgColor: 'hover:bg-gray-50 dark:hover:bg-gray-700/50',
+      glowColor: 'rgba(55, 65, 81, 0.4)',
       name: 'GitHub'
     },
     { 
@@ -30,6 +32,7 @@ export const About: React.FC = () => {
       href: 'https://www.linkedin.com/in/akshansh-sharma-256604332/', 
       color: 'hover:text-blue-600',
       bgColor: 'hover:bg-blue-50 dark:hover:bg-blue-900/30',
+      glowColor: 'rgba(37, 99, 235, 0.4)',
       name: 'LinkedIn'
     },
     { 
@@ -38,13 +41,14 @@ export const About: React.FC = () => {
           <path 
             d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75S24 8.83 24 12z"
             fill="currentColor"
-            className="text-gray-700 dark:text-gray-200 group-hover:text-green-600 transition-colors duration-300"
+            className="text-gray-700 dark:text-gray-200 group-hover:text-green-600 transition-colors duration-200"
           />
         </svg>
       ), 
       href: 'https://medium.com/@aksh11ansh', 
       color: 'hover:text-green-600',
       bgColor: 'hover:bg-green-50 dark:hover:bg-green-900/30',
+      glowColor: 'rgba(34, 197, 94, 0.4)',
       name: 'Medium'
     },
     { 
@@ -52,6 +56,7 @@ export const About: React.FC = () => {
       href: 'mailto:akshanshsharmaa@gmail.com', 
       color: 'hover:text-red-500',
       bgColor: 'hover:bg-red-50 dark:hover:bg-red-900/30',
+      glowColor: 'rgba(239, 68, 68, 0.4)',
       name: 'Email'
     }
   ];
@@ -172,7 +177,7 @@ export const About: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* Social Links - Enhanced Hover Effects */}
+        {/* Social Links - Enhanced Hover Effects with Fast Animations */}
         <motion.div
           className="mt-8 flex justify-center space-x-4"
           initial={{ opacity: 0, y: 15 }}
@@ -186,34 +191,54 @@ export const About: React.FC = () => {
               href={social.href}
               target="_blank"
               rel="noopener noreferrer"
-              className={`group relative p-4 rounded-full bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm border border-gray-200/70 dark:border-gray-600/70 shadow-lg hover:shadow-xl transition-all duration-300 ${social.color} ${social.bgColor} overflow-hidden`}
+              className={`group relative p-4 rounded-full bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm border border-gray-200/70 dark:border-gray-600/70 shadow-lg hover:shadow-2xl transition-all duration-200 ${social.color} ${social.bgColor} overflow-hidden`}
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.3, delay: 0.9 + index * 0.05 }}
               viewport={{ once: true }}
               whileHover={{ 
-                y: -4, 
-                scale: 1.1,
-                rotate: [0, -5, 5, 0],
-                transition: { duration: 0.4 }
+                y: -6, 
+                scale: 1.15,
+                transition: { duration: 0.15, ease: "easeOut" }
               }}
-              whileTap={{ scale: 0.95 }}
+              whileTap={{ 
+                scale: 0.95,
+                transition: { duration: 0.1 }
+              }}
               title={social.name}
+              style={{
+                filter: 'drop-shadow(0 0 0px transparent)',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.filter = `drop-shadow(0 0 20px ${social.glowColor})`;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.filter = 'drop-shadow(0 0 0px transparent)';
+              }}
             >
+              {/* Enhanced Glow Effect */}
+              <motion.div
+                className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 blur-lg"
+                style={{
+                  background: `radial-gradient(circle, ${social.glowColor} 0%, transparent 70%)`
+                }}
+                initial={{ scale: 0.5 }}
+                whileHover={{ 
+                  scale: 2,
+                  transition: { duration: 0.2 }
+                }}
+              />
+              
               {/* Ripple Effect on Hover */}
               <motion.div
-                className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-20"
+                className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-30"
                 style={{
-                  background: social.name === 'X (Twitter)' ? 'radial-gradient(circle, rgba(0,0,0,0.3) 0%, transparent 70%)' :
-                             social.name === 'GitHub' ? 'radial-gradient(circle, rgba(55,65,81,0.3) 0%, transparent 70%)' :
-                             social.name === 'LinkedIn' ? 'radial-gradient(circle, rgba(37,99,235,0.3) 0%, transparent 70%)' :
-                             social.name === 'Medium' ? 'radial-gradient(circle, rgba(34,197,94,0.3) 0%, transparent 70%)' :
-                             'radial-gradient(circle, rgba(239,68,68,0.3) 0%, transparent 70%)'
+                  background: `radial-gradient(circle, ${social.glowColor} 0%, transparent 70%)`
                 }}
                 initial={{ scale: 0 }}
                 whileHover={{ 
-                  scale: 1.5,
-                  transition: { duration: 0.4 }
+                  scale: 1.8,
+                  transition: { duration: 0.3 }
                 }}
               />
               
@@ -221,34 +246,31 @@ export const About: React.FC = () => {
               <motion.div
                 className="relative z-10"
                 whileHover={{ 
-                  rotate: social.name === 'GitHub' ? 360 : 
-                           social.name === 'Medium' ? [0, -10, 10, 0] :
-                           social.name === 'Email' ? [0, 15, -15, 0] :
-                           [0, 10, -10, 0],
-                  transition: { duration: 0.5 }
+                  rotate: social.name === 'GitHub' ? 180 : 
+                           social.name === 'Medium' ? [0, -15, 15, 0] :
+                           social.name === 'Email' ? [0, 20, -20, 0] :
+                           social.name === 'LinkedIn' ? [0, 10, -10, 0] :
+                           [0, 15, -15, 0],
+                  transition: { duration: 0.3, ease: "easeInOut" }
                 }}
               >
                 {typeof social.icon === 'function' ? (
                   <social.icon />
                 ) : (
-                  <social.icon className="w-6 h-6 text-gray-700 dark:text-gray-200 transition-colors duration-300" />
+                  <social.icon className="w-6 h-6 text-gray-700 dark:text-gray-200 transition-colors duration-200" />
                 )}
               </motion.div>
 
-              {/* Subtle Glow Effect */}
+              {/* Outer Glow Ring */}
               <motion.div
-                className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-30 blur-md"
+                className="absolute inset-0 rounded-full border-2 opacity-0 group-hover:opacity-60"
                 style={{
-                  background: social.name === 'X (Twitter)' ? 'rgba(0,0,0,0.1)' :
-                             social.name === 'GitHub' ? 'rgba(55,65,81,0.1)' :
-                             social.name === 'LinkedIn' ? 'rgba(37,99,235,0.1)' :
-                             social.name === 'Medium' ? 'rgba(34,197,94,0.1)' :
-                             'rgba(239,68,68,0.1)'
+                  borderColor: social.glowColor.replace('0.4', '0.6')
                 }}
-                initial={{ scale: 0.8 }}
+                initial={{ scale: 1 }}
                 whileHover={{ 
-                  scale: 1.2,
-                  transition: { duration: 0.3 }
+                  scale: 1.3,
+                  transition: { duration: 0.2 }
                 }}
               />
             </motion.a>
