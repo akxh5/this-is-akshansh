@@ -1,26 +1,36 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Twitter, Github, Linkedin, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail } from 'lucide-react';
 
 export const About: React.FC = () => {
   const socials = [
     { 
-      icon: Twitter, 
+      icon: () => (
+        <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+          <path 
+            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+            className="text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors duration-300"
+          />
+        </svg>
+      ), 
       href: 'https://x.com/akxh_5', 
-      color: 'hover:text-blue-400',
-      bgColor: 'hover:bg-blue-50 dark:hover:bg-blue-900/30'
+      color: 'hover:text-black dark:hover:text-white',
+      bgColor: 'hover:bg-gray-50 dark:hover:bg-gray-700/50',
+      name: 'X (Twitter)'
     },
     { 
       icon: Github, 
       href: 'https://github.com/akxh5', 
       color: 'hover:text-gray-800 dark:hover:text-white',
-      bgColor: 'hover:bg-gray-50 dark:hover:bg-gray-700/50'
+      bgColor: 'hover:bg-gray-50 dark:hover:bg-gray-700/50',
+      name: 'GitHub'
     },
     { 
       icon: Linkedin, 
       href: 'https://www.linkedin.com/in/akshansh-sharma-256604332/', 
       color: 'hover:text-blue-600',
-      bgColor: 'hover:bg-blue-50 dark:hover:bg-blue-900/30'
+      bgColor: 'hover:bg-blue-50 dark:hover:bg-blue-900/30',
+      name: 'LinkedIn'
     },
     { 
       icon: () => (
@@ -34,13 +44,15 @@ export const About: React.FC = () => {
       ), 
       href: 'https://medium.com/@aksh11ansh', 
       color: 'hover:text-green-600',
-      bgColor: 'hover:bg-green-50 dark:hover:bg-green-900/30'
+      bgColor: 'hover:bg-green-50 dark:hover:bg-green-900/30',
+      name: 'Medium'
     },
     { 
       icon: Mail, 
       href: 'mailto:akshanshsharmaa@gmail.com', 
       color: 'hover:text-red-500',
-      bgColor: 'hover:bg-red-50 dark:hover:bg-red-900/30'
+      bgColor: 'hover:bg-red-50 dark:hover:bg-red-900/30',
+      name: 'Email'
     }
   ];
 
@@ -160,7 +172,7 @@ export const About: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* Social Links - Faster Stagger */}
+        {/* Social Links - Enhanced Hover Effects */}
         <motion.div
           className="mt-8 flex justify-center space-x-4"
           initial={{ opacity: 0, y: 15 }}
@@ -174,22 +186,75 @@ export const About: React.FC = () => {
               href={social.href}
               target="_blank"
               rel="noopener noreferrer"
-              className={`p-4 rounded-full bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm border border-gray-200/70 dark:border-gray-600/70 shadow-lg hover:shadow-xl transition-all duration-300 group ${social.color} ${social.bgColor}`}
+              className={`group relative p-4 rounded-full bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm border border-gray-200/70 dark:border-gray-600/70 shadow-lg hover:shadow-xl transition-all duration-300 ${social.color} ${social.bgColor} overflow-hidden`}
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.3, delay: 0.9 + index * 0.05 }}
               viewport={{ once: true }}
-              whileHover={{ y: -4, scale: 1.1 }}
+              whileHover={{ 
+                y: -4, 
+                scale: 1.1,
+                rotate: [0, -5, 5, 0],
+                transition: { duration: 0.4 }
+              }}
+              whileTap={{ scale: 0.95 }}
+              title={social.name}
             >
-              {typeof social.icon === 'function' ? (
-                <social.icon />
-              ) : (
-                <social.icon className="w-6 h-6 text-gray-700 dark:text-gray-200 transition-colors duration-300" />
-              )}
+              {/* Ripple Effect on Hover */}
+              <motion.div
+                className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-20"
+                style={{
+                  background: social.name === 'X (Twitter)' ? 'radial-gradient(circle, rgba(0,0,0,0.3) 0%, transparent 70%)' :
+                             social.name === 'GitHub' ? 'radial-gradient(circle, rgba(55,65,81,0.3) 0%, transparent 70%)' :
+                             social.name === 'LinkedIn' ? 'radial-gradient(circle, rgba(37,99,235,0.3) 0%, transparent 70%)' :
+                             social.name === 'Medium' ? 'radial-gradient(circle, rgba(34,197,94,0.3) 0%, transparent 70%)' :
+                             'radial-gradient(circle, rgba(239,68,68,0.3) 0%, transparent 70%)'
+                }}
+                initial={{ scale: 0 }}
+                whileHover={{ 
+                  scale: 1.5,
+                  transition: { duration: 0.4 }
+                }}
+              />
+              
+              {/* Icon with Enhanced Animation */}
+              <motion.div
+                className="relative z-10"
+                whileHover={{ 
+                  rotate: social.name === 'GitHub' ? 360 : 
+                           social.name === 'Medium' ? [0, -10, 10, 0] :
+                           social.name === 'Email' ? [0, 15, -15, 0] :
+                           [0, 10, -10, 0],
+                  transition: { duration: 0.5 }
+                }}
+              >
+                {typeof social.icon === 'function' ? (
+                  <social.icon />
+                ) : (
+                  <social.icon className="w-6 h-6 text-gray-700 dark:text-gray-200 transition-colors duration-300" />
+                )}
+              </motion.div>
+
+              {/* Subtle Glow Effect */}
+              <motion.div
+                className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-30 blur-md"
+                style={{
+                  background: social.name === 'X (Twitter)' ? 'rgba(0,0,0,0.1)' :
+                             social.name === 'GitHub' ? 'rgba(55,65,81,0.1)' :
+                             social.name === 'LinkedIn' ? 'rgba(37,99,235,0.1)' :
+                             social.name === 'Medium' ? 'rgba(34,197,94,0.1)' :
+                             'rgba(239,68,68,0.1)'
+                }}
+                initial={{ scale: 0.8 }}
+                whileHover={{ 
+                  scale: 1.2,
+                  transition: { duration: 0.3 }
+                }}
+              />
             </motion.a>
           ))}
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 };
