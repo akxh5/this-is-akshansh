@@ -98,7 +98,7 @@ export const Projects: React.FC = () => {
               <div className={`absolute inset-0 bg-gradient-to-r ${project.color} rounded-3xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500`}></div>
               
               <motion.div
-                className="relative bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-3xl p-8 h-full hover:shadow-2xl transition-all duration-500"
+                className="relative bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-3xl p-8 h-full hover:shadow-2xl transition-all duration-500 overflow-hidden"
                 whileHover={{ y: -10, scale: 1.02 }}
               >
                 {/* Header with Emoji and Status */}
@@ -160,14 +160,46 @@ export const Projects: React.FC = () => {
                   {project.description}
                 </p>
 
-                {/* Interactive Bottom Border */}
+                {/* Animated Border - Now properly curved with SVG */}
                 <motion.div
-                  className={`absolute bottom-0 left-0 h-1 bg-gradient-to-r ${project.color} rounded-b-3xl`}
-                  initial={{ width: 0 }}
-                  whileInView={{ width: "100%" }}
+                  className="absolute inset-0 pointer-events-none"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
                   transition={{ duration: 1, delay: index * 0.1 + 0.5 }}
                   viewport={{ once: true }}
-                />
+                >
+                  <svg
+                    className="absolute inset-0 w-full h-full"
+                    viewBox="0 0 100 100"
+                    preserveAspectRatio="none"
+                  >
+                    <defs>
+                      <linearGradient id={`gradient-${index}`} x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor={project.color.includes('purple') ? '#8b5cf6' : 
+                                                   project.color.includes('blue') ? '#3b82f6' :
+                                                   project.color.includes('indigo') ? '#6366f1' :
+                                                   project.color.includes('emerald') ? '#10b981' : '#8b5cf6'} />
+                        <stop offset="100%" stopColor={project.color.includes('pink') ? '#ec4899' :
+                                                      project.color.includes('teal') ? '#14b8a6' :
+                                                      project.color.includes('purple') ? '#8b5cf6' :
+                                                      project.color.includes('teal') ? '#14b8a6' : '#ec4899'} />
+                      </linearGradient>
+                    </defs>
+                    <motion.rect
+                      x="0"
+                      y="96"
+                      width="100"
+                      height="4"
+                      rx="2"
+                      ry="2"
+                      fill={`url(#gradient-${index})`}
+                      initial={{ width: 0 }}
+                      whileInView={{ width: 100 }}
+                      transition={{ duration: 1, delay: index * 0.1 + 0.5 }}
+                      viewport={{ once: true }}
+                    />
+                  </svg>
+                </motion.div>
 
                 {/* Hover Overlay for Coming Soon */}
                 {project.status === 'coming-soon' && (
