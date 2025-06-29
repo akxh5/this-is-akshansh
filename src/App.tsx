@@ -6,6 +6,7 @@ import { Projects } from './components/Projects';
 import { Skills } from './components/Skills';
 import { Poetry } from './components/Poetry';
 import { Contact } from './components/Contact';
+import { SectionDivider } from './components/SectionDivider';
 import { useTheme } from './hooks/useTheme';
 
 function App() {
@@ -17,10 +18,25 @@ function App() {
       
       <main>
         <Hero />
+        
+        <SectionDivider variant="wave" direction="left" />
+        
         <About />
+        
+        <SectionDivider variant="diagonal" direction="right" />
+        
         <Projects />
+        
+        <SectionDivider variant="curve" direction="left" />
+        
         <Skills />
+        
+        <SectionDivider variant="zigzag" direction="right" />
+        
         <Poetry />
+        
+        <SectionDivider variant="wave" direction="left" />
+        
         <Contact />
       </main>
     </div>
