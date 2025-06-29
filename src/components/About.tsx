@@ -254,7 +254,7 @@ export const About: React.FC = () => {
             </motion.a>
           ))}
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 };
