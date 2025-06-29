@@ -46,8 +46,9 @@ export const Projects: React.FC = () => {
       description: "DePost is a decentralized publishing platform that lets anyone share content permanently and censorship-free on-chain.",
       emoji: "📝",
       color: "from-emerald-500 to-teal-500",
+      liveUrl: "https://frabjous-seahorse-116379.netlify.app/",
       githubUrl: "https://github.com/akxh5/de-post",
-      status: "coming-soon"
+      status: "live"
     }
   ];
 
