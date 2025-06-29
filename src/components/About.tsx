@@ -39,37 +39,36 @@ export const About: React.FC = () => {
   return (
     <section id="about" className="min-h-screen flex items-center justify-center px-6 py-20">
       <motion.div
-        initial={{ opacity: 0, y: 50 }}
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        viewport={{ once: true, margin: "-50px" }}
         className="text-center max-w-5xl"
       >
         <motion.h2 
           className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-16 leading-tight"
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
           viewport={{ once: true }}
         >
           About
         </motion.h2>
         
-        {/* Primary Quote - Back to Original Design */}
+        {/* Primary Quote - Optimized for Speed */}
         <motion.div
           className="relative mb-12"
-          initial={{ opacity: 0, scale: 0.9 }}
+          initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.4 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
           viewport={{ once: true }}
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-blue-600/20 rounded-3xl blur-xl transform -rotate-1"></div>
           <div className="relative bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-3xl p-12 shadow-2xl">
             <motion.p 
               className="text-3xl md:text-4xl font-light text-gray-800 dark:text-gray-200 leading-relaxed italic"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 0.6 }}
+              transition={{ duration: 0.4, delay: 0.3 }}
               viewport={{ once: true }}
             >
               "I code the future, but I never forget to feel."
@@ -77,21 +76,21 @@ export const About: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* Supporting Bio Text */}
+        {/* Supporting Bio Text - Faster Animation */}
         <motion.div
           className="max-w-3xl mx-auto"
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
+          transition={{ duration: 0.4, delay: 0.4 }}
           viewport={{ once: true }}
         >
           <div className="relative">
-            {/* Animated underline effect */}
+            {/* Animated underline effect - Faster */}
             <motion.div
               className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 h-0.5 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full"
               initial={{ width: 0 }}
               whileInView={{ width: "60px" }}
-              transition={{ duration: 1, delay: 1.2 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
               viewport={{ once: true }}
             />
             
@@ -99,7 +98,7 @@ export const About: React.FC = () => {
               className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed font-light"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 1 }}
+              transition={{ duration: 0.4, delay: 0.5 }}
               viewport={{ once: true }}
             >
               I'm <span className="font-medium text-gray-800 dark:text-gray-100">Akshansh Sharma</span> — a developer, researcher, and storyteller. 
@@ -109,18 +108,17 @@ export const About: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* Avatar Image with Running Border Light */}
+        {/* Avatar Image with Running Border Light - Optimized */}
         <motion.div
           className="mt-16"
-          initial={{ opacity: 0, scale: 0.8 }}
+          initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 1.4 }}
+          transition={{ duration: 0.4, delay: 0.7 }}
           viewport={{ once: true }}
         >
           <div className="relative inline-block">
-            {/* Running Border Light Effect for Profile Picture */}
+            {/* Running Border Light Effect - Smoother Performance */}
             <div className="relative p-[3px] rounded-full overflow-hidden">
-              {/* Animated gradient border that rotates around with blur */}
               <motion.div
                 className="absolute inset-0 rounded-full blur-sm"
                 style={{
@@ -141,7 +139,6 @@ export const About: React.FC = () => {
                 }}
               />
               
-              {/* Inner container for the image - completely separate */}
               <div className="relative bg-white dark:bg-gray-900 rounded-full p-1 m-[3px]">
                 <motion.img
                   src="/ChatGPT Image Jun 21, 2025 at 09_42_06 AM.png"
@@ -155,12 +152,12 @@ export const About: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* Social Links - Enhanced visibility for dark mode */}
+        {/* Social Links - Faster Stagger */}
         <motion.div
           className="mt-8 flex justify-center space-x-4"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.6 }}
+          transition={{ duration: 0.4, delay: 0.8 }}
           viewport={{ once: true }}
         >
           {socials.map((social, index) => (
@@ -172,7 +169,7 @@ export const About: React.FC = () => {
               className={`p-4 rounded-full bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm border border-gray-200/70 dark:border-gray-600/70 shadow-lg hover:shadow-xl transition-all duration-300 group ${social.color} ${social.bgColor}`}
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, delay: 1.8 + index * 0.1 }}
+              transition={{ duration: 0.3, delay: 0.9 + index * 0.05 }}
               viewport={{ once: true }}
               whileHover={{ y: -4, scale: 1.1 }}
             >

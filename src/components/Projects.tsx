@@ -24,8 +24,8 @@ export const Projects: React.FC = () => {
       status: "live"
     },
     {
-      title: "DD-DAS Portal",
-      description: "Distributed Data Architecture System providing scalable, secure, and efficient data management solutions for modern applications.",
+      title: "DDDAS",
+      description: "DDDAS (Decentralized Data Download Duplication Alert System) is a real-time system that detects and prevents duplicate file downloads across devices using hash-based verification and smart alerts.",
       emoji: "🌐",
       color: "from-blue-500 to-teal-500",
       liveUrl: "https://dd-das.vercel.app",
