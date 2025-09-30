@@ -19,7 +19,7 @@ export const Projects: React.FC = () => {
       description: "Next-generation blockchain infrastructure platform revolutionizing Web3 development with cutting-edge tools and seamless integration.",
       emoji: "✨",
       color: "from-purple-500 to-pink-500",
-      liveUrl: "https://syn8x.tech",
+      liveUrl: "www.syn8x.tech",
       githubUrl: "https://github.com/akxh5/syn8x",
       status: "live"
     },
@@ -28,8 +28,8 @@ export const Projects: React.FC = () => {
       description: "DDDAS (Decentralized Data Download Duplication Alert System) is a real-time system that detects and prevents duplicate file downloads across devices using hash-based verification and smart alerts.",
       emoji: "🌐",
       color: "from-blue-500 to-teal-500",
-      liveUrl: "https://dd-das.vercel.app",
-      githubUrl: "https://github.com/akxh5/dd-das",
+      liveUrl: "https://oper8a.vercel.app",
+      githubUrl: "https://github.com/akxh5/oper8a",
       status: "live"
     },
     {
@@ -37,7 +37,7 @@ export const Projects: React.FC = () => {
       description: "The Akshansh Experience is a poetic fusion of technology, design, and identity — built to feel, not just function.",
       emoji: "🎭",
       color: "from-indigo-500 to-purple-500",
-      liveUrl: "https://akshansh.dev",
+      liveUrl: "https://the-akshansh-experience.netlify.app",
       githubUrl: "https://github.com/akxh5/akshansh-experience",
       status: "live"
     },
@@ -47,7 +47,7 @@ export const Projects: React.FC = () => {
       emoji: "📝",
       color: "from-emerald-500 to-teal-500",
       liveUrl: "https://port-depost.netlify.app/",
-      githubUrl: "https://github.com/akxh5/de-post",
+      githubUrl: "https://github.com/akxh5/depost",
       status: "live"
     }
   ];
