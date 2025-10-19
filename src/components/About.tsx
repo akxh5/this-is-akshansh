@@ -53,7 +53,7 @@ export const About: React.FC = () => {
     },
     { 
       icon: Mail, 
-      href: 'mailto:akshanshsharmaa@gmail.com', 
+      href: 'mailto:aksh11ansh@gmail.com', 
       color: 'hover:text-red-500',
       bgColor: 'hover:bg-red-50 dark:hover:bg-red-900/30',
       glowColor: 'rgba(239, 68, 68, 0.4)',
