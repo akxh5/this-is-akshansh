@@ -13,7 +13,7 @@ export const About: React.FC = () => {
           />
         </svg>
       ), 
-      href: 'https://x.com/akxh_5', 
+      href: 'https://x.com/akxhansh', 
       color: 'hover:text-black dark:hover:text-white',
       bgColor: 'hover:bg-gray-50 dark:hover:bg-gray-700/50',
       glowColor: 'rgba(0, 0, 0, 0.3)',
@@ -21,7 +21,7 @@ export const About: React.FC = () => {
     },
     { 
       icon: Github, 
-      href: 'https://github.com/akxh5', 
+      href: 'https://github.com/akxhansh', 
       color: 'hover:text-gray-800 dark:hover:text-white',
       bgColor: 'hover:bg-gray-50 dark:hover:bg-gray-700/50',
       glowColor: 'rgba(55, 65, 81, 0.4)',
