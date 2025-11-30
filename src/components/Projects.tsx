@@ -20,7 +20,7 @@ export const Projects: React.FC = () => {
       emoji: "✨",
       color: "from-purple-500 to-pink-500",
       liveUrl: "www.syn8x.tech",
-      githubUrl: "https://github.com/akxh5/syn8x",
+      githubUrl: "https://github.com/akxhansh/syn8x-terminal-web",
       status: "live"
     },
     {
@@ -29,7 +29,7 @@ export const Projects: React.FC = () => {
       emoji: "🌐",
       color: "from-blue-500 to-teal-500",
       liveUrl: "https://oper8a.vercel.app",
-      githubUrl: "https://github.com/akxh5/oper8a",
+      githubUrl: "https://github.com/akxhansh/oper8a",
       status: "live"
     },
     {
@@ -38,7 +38,7 @@ export const Projects: React.FC = () => {
       emoji: "🎭",
       color: "from-indigo-500 to-purple-500",
       liveUrl: "https://the-akshansh-experience.netlify.app",
-      githubUrl: "https://github.com/akxh5/akshansh-experience",
+      githubUrl: "https://github.com/akxhansh/the-akshansh-experience",
       status: "live"
     },
     {
@@ -47,7 +47,7 @@ export const Projects: React.FC = () => {
       emoji: "📝",
       color: "from-emerald-500 to-teal-500",
       liveUrl: "https://port-depost.netlify.app/",
-      githubUrl: "https://github.com/akxh5/depost",
+      githubUrl: "https://port-depost.netlify.app/",
       status: "live"
     }
   ];
@@ -235,7 +235,7 @@ export const Projects: React.FC = () => {
           viewport={{ once: true }}
         >
           <motion.a
-            href="https://github.com/akxh5"
+            href="https://github.com/akxhansh"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center space-x-3 px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-2xl font-medium hover:from-purple-700 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl group"
