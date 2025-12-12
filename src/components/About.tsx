@@ -13,7 +13,7 @@ export const About: React.FC = () => {
           />
         </svg>
       ), 
-      href: 'https://x.com/akxhansh', 
+      href: 'https://x.com/akxh_5', 
       color: 'hover:text-black dark:hover:text-white',
       bgColor: 'hover:bg-gray-50 dark:hover:bg-gray-700/50',
       glowColor: 'rgba(0, 0, 0, 0.3)',
@@ -21,7 +21,7 @@ export const About: React.FC = () => {
     },
     { 
       icon: Github, 
-      href: 'https://github.com/akxhansh', 
+      href: 'https://github.com/akxh5', 
       color: 'hover:text-gray-800 dark:hover:text-white',
       bgColor: 'hover:bg-gray-50 dark:hover:bg-gray-700/50',
       glowColor: 'rgba(55, 65, 81, 0.4)',
@@ -128,7 +128,7 @@ export const About: React.FC = () => {
             >
               I'm <span className="font-medium text-gray-800 dark:text-gray-100">Akshansh Sharma</span> — a developer, researcher, and storyteller. 
               I build scalable systems, contribute to open ecosystems like Solana, and write poetic fragments 
-              that echo the human side of tech.
+              that echo the human side of me.
             </motion.p>
           </div>
         </motion.div>
