@@ -108,161 +108,156 @@ export const Skills: React.FC = () => {
           </motion.p>
         </motion.div>
 
-        {/* Skills Grid with Enhanced Animations */}
-        <motion.div 
-          className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-12 items-center justify-items-center"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.3 }}
-          viewport={{ once: true }}
-        >
-          {skills.map((skill, index) => (
-            <motion.div
-              key={skill.name}
-              initial={{ opacity: 0, scale: 0.5, y: 20 }}
-              whileInView={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ 
-                duration: 0.5, 
-                delay: index * 0.05,
-                ease: "easeOut"
-              }}
-              viewport={{ once: true }}
-              whileHover={{ 
-                scale: 1.3, 
-                y: -12,
-                transition: { duration: 0.2, ease: "easeOut" }
-              }}
-              className="group cursor-pointer relative"
-              title={skill.name}
-            >
-              {/* Glow Effect on Hover */}
-              <motion.div
-                className="absolute inset-0 rounded-full blur-lg opacity-0 group-hover:opacity-60"
-                style={{
-                  background: 'radial-gradient(circle, rgba(147, 51, 234, 0.3) 0%, rgba(59, 130, 246, 0.3) 100%)'
-                }}
-                initial={{ scale: 0.5 }}
-                whileHover={{ scale: 2 }}
-                transition={{ duration: 0.3 }}
-              />
+        {/* Horizontal Carousel */}
+        <div className="relative overflow-hidden">
+          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-gray-50 dark:from-gray-900 to-transparent pointer-events-none z-20" />
+          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-gray-50 dark:from-gray-900 to-transparent pointer-events-none z-20" />
 
-              <motion.div 
-                className="w-16 h-16 flex items-center justify-center relative z-10"
-                whileHover={{ 
-                  rotate: [0, -10, 10, 0],
-                  transition: { duration: 0.4 }
-                }}
-              >
-                <img 
-                  src={skill.icon} 
-                  alt={skill.name}
-                  className="w-12 h-12 object-contain filter group-hover:drop-shadow-2xl transition-all duration-200 opacity-70 group-hover:opacity-100"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.style.display = 'none';
-                    const parent = target.parentElement;
-                    if (parent) {
-                      const fallbackEmojis: { [key: string]: string } = {
-                        'React': '⚛️',
-                        'TypeScript': '📘',
-                        'JavaScript': '🟨',
-                        'TailwindCSS': '🎨',
-                        'Vue.js': '💚',
-                        'Node.js': '🟢',
-                        'Python': '🐍',
-                        'Java': '☕',
-                        'Solidity': '💎',
-                        'Ethereum': '⟠',
-                        'Git': '📚',
-                        'GitHub': '🐙',
-                        'WordPress': '📝',
-                        'Docker': '🐳',
-                        'Figma': '🎨',
-                        'MongoDB': '🍃',
-                        'PostgreSQL': '🐘'
-                      };
-                      const emoji = fallbackEmojis[skill.name] || '⚡';
-                      parent.innerHTML = `<div class="text-3xl opacity-70 group-hover:opacity-100">${emoji}</div>`;
-                    }
-                  }}
-                />
-              </motion.div>
-
-              {/* Skill Name Tooltip */}
-              <motion.div
-                className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 px-2 py-1 bg-gray-800 dark:bg-gray-200 text-white dark:text-gray-800 text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none"
-                initial={{ y: 10 }}
-                whileHover={{ y: 0 }}
-              >
-                {skill.name}
-              </motion.div>
-            </motion.div>
-          ))}
-
-          {/* Enhanced More Coming Up Indicator */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.5, y: 20 }}
-            whileInView={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ 
-              duration: 0.5, 
-              delay: skills.length * 0.05,
-              ease: "easeOut"
+            className="flex gap-12 py-8 px-4"
+            animate={{ x: [0, -1400] }}
+            transition={{
+              duration: 50,
+              repeat: Infinity,
+              ease: "linear"
             }}
-            viewport={{ once: true }}
-            whileHover={{ 
-              scale: 1.3, 
-              y: -12,
-              transition: { duration: 0.2, ease: "easeOut" }
-            }}
-            className="group cursor-pointer relative"
-            title="More coming up..."
           >
-            {/* Animated Glow */}
-            <motion.div
-              className="absolute inset-0 rounded-full blur-lg opacity-0 group-hover:opacity-40"
-              style={{
-                background: 'radial-gradient(circle, rgba(147, 51, 234, 0.4) 0%, rgba(59, 130, 246, 0.4) 100%)'
-              }}
-              animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0, 0.2, 0]
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            />
+            {[...Array(2)].map((_, cycle) => (
+              <div key={cycle} className="flex gap-12 flex-shrink-0">
+                {skills.map((skill, index) => (
+                  <motion.div
+                    key={`${cycle}-${skill.name}`}
+                    className="group cursor-pointer relative flex-shrink-0"
+                    title={skill.name}
+                    whileHover={{
+                      scale: 1.3,
+                      y: -12,
+                      transition: { duration: 0.2, ease: "easeOut" }
+                    }}
+                  >
+                    {/* Glow Effect on Hover */}
+                    <motion.div
+                      className="absolute inset-0 rounded-full blur-lg opacity-0 group-hover:opacity-60"
+                      style={{
+                        background: 'radial-gradient(circle, rgba(147, 51, 234, 0.3) 0%, rgba(59, 130, 246, 0.3) 100%)'
+                      }}
+                      initial={{ scale: 0.5 }}
+                      whileHover={{ scale: 2 }}
+                      transition={{ duration: 0.3 }}
+                    />
 
-            <motion.div 
-              className="w-16 h-16 flex items-center justify-center relative z-10"
-              whileHover={{ 
-                rotate: 180,
-                transition: { duration: 0.3 }
-              }}
-            >
-              <motion.div 
-                className="w-12 h-12 rounded-full border-2 border-dashed border-gray-400 dark:border-gray-500 flex items-center justify-center group-hover:border-purple-500 transition-colors duration-200"
-                animate={{
-                  rotate: [0, 360],
-                  borderColor: [
-                    'rgba(156, 163, 175, 1)',
-                    'rgba(147, 51, 234, 0.5)',
-                    'rgba(59, 130, 246, 0.5)',
-                    'rgba(156, 163, 175, 1)'
-                  ]
-                }}
-                transition={{
-                  duration: 8,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-              >
-                <Plus className="w-6 h-6 text-gray-400 dark:text-gray-500 group-hover:text-purple-500 transition-colors duration-200" />
-              </motion.div>
-            </motion.div>
+                    <motion.div
+                      className="w-16 h-16 flex items-center justify-center relative z-10"
+                      whileHover={{
+                        rotate: [0, -10, 10, 0],
+                        transition: { duration: 0.4 }
+                      }}
+                    >
+                      <img
+                        src={skill.icon}
+                        alt={skill.name}
+                        className="w-12 h-12 object-contain filter group-hover:drop-shadow-2xl transition-all duration-200 opacity-70 group-hover:opacity-100"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.style.display = 'none';
+                          const parent = target.parentElement;
+                          if (parent) {
+                            const fallbackEmojis: { [key: string]: string } = {
+                              'React': '⚛️',
+                              'TypeScript': '📘',
+                              'JavaScript': '🟨',
+                              'TailwindCSS': '🎨',
+                              'Vue.js': '💚',
+                              'Node.js': '🟢',
+                              'Python': '🐍',
+                              'Java': '☕',
+                              'Solidity': '💎',
+                              'Ethereum': '⟠',
+                              'Git': '📚',
+                              'GitHub': '🐙',
+                              'WordPress': '📝',
+                              'Docker': '🐳',
+                              'Figma': '🎨',
+                              'MongoDB': '🍃',
+                              'PostgreSQL': '🐘'
+                            };
+                            const emoji = fallbackEmojis[skill.name] || '⚡';
+                            parent.innerHTML = `<div class="text-3xl opacity-70 group-hover:opacity-100">${emoji}</div>`;
+                          }
+                        }}
+                      />
+                    </motion.div>
+
+                    {/* Skill Name Tooltip */}
+                    <motion.div
+                      className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 px-2 py-1 bg-gray-800 dark:bg-gray-200 text-white dark:text-gray-800 text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none"
+                      initial={{ y: 10 }}
+                      whileHover={{ y: 0 }}
+                    >
+                      {skill.name}
+                    </motion.div>
+                  </motion.div>
+                ))}
+
+                {/* More Coming Up Indicator */}
+                <motion.div
+                  className="group cursor-pointer relative flex-shrink-0"
+                  title="More coming up..."
+                  whileHover={{
+                    scale: 1.3,
+                    y: -12,
+                    transition: { duration: 0.2, ease: "easeOut" }
+                  }}
+                >
+                  {/* Animated Glow */}
+                  <motion.div
+                    className="absolute inset-0 rounded-full blur-lg opacity-0 group-hover:opacity-40"
+                    style={{
+                      background: 'radial-gradient(circle, rgba(147, 51, 234, 0.4) 0%, rgba(59, 130, 246, 0.4) 100%)'
+                    }}
+                    animate={{
+                      scale: [1, 1.2, 1],
+                      opacity: [0, 0.2, 0]
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  />
+
+                  <motion.div
+                    className="w-16 h-16 flex items-center justify-center relative z-10"
+                    whileHover={{
+                      rotate: 180,
+                      transition: { duration: 0.3 }
+                    }}
+                  >
+                    <motion.div
+                      className="w-12 h-12 rounded-full border-2 border-dashed border-gray-400 dark:border-gray-500 flex items-center justify-center group-hover:border-purple-500 transition-colors duration-200"
+                      animate={{
+                        rotate: [0, 360],
+                        borderColor: [
+                          'rgba(156, 163, 175, 1)',
+                          'rgba(147, 51, 234, 0.5)',
+                          'rgba(59, 130, 246, 0.5)',
+                          'rgba(156, 163, 175, 1)'
+                        ]
+                      }}
+                      transition={{
+                        duration: 8,
+                        repeat: Infinity,
+                        ease: "linear"
+                      }}
+                    >
+                      <Plus className="w-6 h-6 text-gray-400 dark:text-gray-500 group-hover:text-purple-500 transition-colors duration-200" />
+                    </motion.div>
+                  </motion.div>
+                </motion.div>
+              </div>
+            ))}
           </motion.div>
-        </motion.div>
+        </div>
 
         {/* Enhanced Footer Text with Floating Animation */}
         <motion.div
