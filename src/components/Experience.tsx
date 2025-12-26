@@ -17,7 +17,7 @@ const CarouselContent = () => (
     {experienceImages.map((src, index) => (
       <motion.div
         key={index}
-        className="group relative flex-shrink-0 w-64 h-80 mx-4"
+        className="group relative flex-shrink-0 w-56 sm:w-64 h-80 mx-4"
         whileHover={{
           scale: 1.05,
           y: -5, // Slight lift
@@ -57,13 +57,13 @@ const carouselVariants = {
 };
 
 export const Experience: React.FC = () => {
-  const [duration, setDuration] = useState(25);
+  const [duration, setDuration] = useState(10);
 
   return (
-    <section className="py-20 relative w-full overflow-hidden">
-      <div className="max-w-7xl mx-auto w-full relative z-10 px-6">
+    <section className="py-10 relative w-full overflow-hidden">
+      <div className="max-w-7xl mx-auto w-full relative z-10 px-4 sm:px-6">
         <motion.h2
-          className="text-5xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 dark:from-white dark:via-gray-100 dark:to-white mb-4 text-center"
+          className="text-4xl sm:text-5xl md:text-7xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 dark:from-white dark:via-gray-100 dark:to-white mb-4 text-center"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -72,7 +72,7 @@ export const Experience: React.FC = () => {
           Experience
         </motion.h2>
         <motion.p
-          className="text-center text-gray-600 dark:text-gray-400 mb-16 text-lg"
+          className="text-center text-gray-600 dark:text-gray-400 mb-16 text-base sm:text-lg font-light"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -84,8 +84,8 @@ export const Experience: React.FC = () => {
 
       <div
         className="w-full cursor-grab"
-        onMouseEnter={() => setDuration(50)} // Slow down on hover
-        onMouseLeave={() => setDuration(25)}   // Resume normal speed
+        onMouseEnter={() => setDuration(20)} // Slow down on hover
+        onMouseLeave={() => setDuration(10)}   // Resume normal speed
       >
         <motion.div
           className="flex flex-nowrap"
@@ -94,6 +94,7 @@ export const Experience: React.FC = () => {
           animate="scroll"
           custom={duration}
         >
+          <CarouselContent />
           <CarouselContent />
           <CarouselContent />
         </motion.div>

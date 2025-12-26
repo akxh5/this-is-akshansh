@@ -5,6 +5,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
+        sans: ['"Work Sans"', 'system-ui', 'sans-serif'],
         apple: ['-apple-system', 'BlinkMacSystemFont', '"San Francisco"', '"Helvetica Neue"', 'sans-serif'],
       },
       animation: {

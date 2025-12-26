@@ -111,10 +111,10 @@ export const Skills: React.FC = () => {
         </motion.div>
 
         {/* Horizontal Carousel */}
-        <div className="relative overflow-visible">
+        <div className="relative overflow-hidden">
 
           <motion.div
-            className="flex gap-12 py-8 px-4"
+            className="flex gap-12 pt-8 pb-12 px-4"
             animate={{ x: [0, -2400] }}
             transition={{
               duration: 50,

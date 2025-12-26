@@ -35,7 +35,7 @@ export const Footer: React.FC = () => {
 
   return (
     <motion.footer 
-      className="relative px-6 pt-5 pb-8"
+      className="relative px-4 sm:px-6 pt-5 pb-8"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1 }}
@@ -44,7 +44,7 @@ export const Footer: React.FC = () => {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 h-px w-1/3 bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
       
       <div className="max-w-7xl mx-auto flex flex-col items-center gap-8">
-        <div className="flex justify-center space-x-6">
+        <div className="flex justify-center space-x-4 sm:space-x-6">
           {socials.map((social, index) => (
             <motion.a
               key={index}
@@ -64,11 +64,11 @@ export const Footer: React.FC = () => {
           ))}
         </div>
 
-        <p className="text-sm text-gray-400 dark:text-gray-500">
+        <p className="text-sm text-gray-400 dark:text-gray-500 font-normal">
           © {year} Akshansh Sharma. All Rights Reserved.
         </p>
 
-        <a href="#" className="absolute bottom-8 right-8 p-3 rounded-full bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm shadow-lg hover:scale-110 transition-transform duration-300">
+        <a href="#" className="absolute bottom-12 md:bottom-8 right-8 p-3 rounded-full bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm shadow-lg hover:scale-110 transition-transform duration-300">
           <ArrowUp className="w-5 h-5 text-gray-600 dark:text-gray-300" />
         </a>
       </div>

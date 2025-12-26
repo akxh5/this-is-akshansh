@@ -8,7 +8,7 @@ export const Hero: React.FC = () => {
   };
 
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center relative px-6 overflow-hidden">
+    <section className="min-h-screen flex flex-col justify-center items-center relative px-4 sm:px-6 overflow-hidden">
       {/* Animated Background Gradients */}
       <motion.div
         className="absolute inset-0 opacity-30"
@@ -87,7 +87,7 @@ export const Hero: React.FC = () => {
         className="text-center max-w-4xl relative z-10"
       >
         <motion.h1 
-          className="text-6xl md:text-8xl font-bold text-gray-900 dark:text-white mb-8 leading-tight"
+          className="text-5xl sm:text-6xl md:text-8xl font-bold text-gray-900 dark:text-white mb-8 leading-tight"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
@@ -113,7 +113,7 @@ export const Hero: React.FC = () => {
         </motion.h1>
         
         <motion.p 
-          className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-12 leading-relaxed max-w-3xl mx-auto"
+          className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-12 leading-relaxed max-w-3xl mx-auto font-normal"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}

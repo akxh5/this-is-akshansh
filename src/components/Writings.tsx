@@ -46,12 +46,12 @@ const WritingCard: React.FC<{ writing: Writing }> = ({ writing }) => {
             className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
           />
         </div>
-        <div className="p-4">
-          <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-2 leading-tight h-14">
+        <div className="p-4 min-h-full">
+          <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-2 leading-tight">
             {writing.title}
           </h3>
           {writing.excerpt && (
-            <p className="text-sm text-gray-500 dark:text-gray-400 mb-4 h-10">
+            <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
               {writing.excerpt}
             </p>
           )}
@@ -73,7 +73,7 @@ const WritingCard: React.FC<{ writing: Writing }> = ({ writing }) => {
 
 export const Writings: React.FC = () => {
   return (
-    <section id="writings" className="pt-20 pb-5 px-6" aria-labelledby="what-i-write-heading">
+    <section id="writings" className="pt-20 pb-5 px-4 sm:px-6" aria-labelledby="what-i-write-heading">
       <div className="max-w-7xl mx-auto">
         <motion.h2
           id="what-i-write-heading"
@@ -94,7 +94,7 @@ export const Writings: React.FC = () => {
         >
           Signaling thinking depth and shipping ideas, not just code.
         </motion.p>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12">
           {writings.map((writing) => (
             <WritingCard key={writing.id} writing={writing} />
           ))}

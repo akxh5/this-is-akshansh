@@ -62,10 +62,10 @@ export const Projects: React.FC = () => {
   };
 
   return (
-    <section className="min-h-screen py-20 px-6">
+    <section className="min-h-screen py-20 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
         <motion.h2 
-          className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-8 text-center"
+          className="text-4xl sm:text-5xl md:text-7xl font-semibold text-gray-900 dark:text-white mb-8 text-center"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -75,7 +75,7 @@ export const Projects: React.FC = () => {
         </motion.h2>
 
         <motion.p 
-          className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 text-center mb-20 font-light"
+          className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 text-center mb-20 font-light"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -98,7 +98,7 @@ export const Projects: React.FC = () => {
               <div className={`absolute inset-0 bg-gradient-to-r ${project.color} rounded-3xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500`}></div>
               
               <motion.div
-                className="relative bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-3xl p-8 h-full hover:shadow-2xl transition-all duration-500 overflow-hidden"
+                className="relative bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-3xl p-6 sm:p-8 h-full hover:shadow-2xl transition-all duration-500 overflow-hidden"
                 whileHover={{ y: -10, scale: 1.02 }}
               >
                 {/* Header with Emoji and Status */}
@@ -149,14 +149,14 @@ export const Projects: React.FC = () => {
                 
                 {/* Project Title */}
                 <motion.h3 
-                  className="text-2xl font-bold text-gray-800 dark:text-white mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-600 group-hover:to-blue-600 transition-all duration-300"
+                  className="text-2xl font-semibold text-gray-800 dark:text-white mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-600 group-hover:to-blue-600 transition-all duration-300"
                   whileHover={{ scale: 1.05 }}
                 >
                   {project.title}
                 </motion.h3>
                 
                 {/* Project Description */}
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm">
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm font-normal">
                   {project.description}
                 </p>
 

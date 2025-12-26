@@ -62,7 +62,7 @@ export const About: React.FC = () => {
   ];
 
   return (
-    <section id="about" className="min-h-screen flex items-center justify-center px-6 py-20">
+    <section id="about" className="min-h-screen flex items-center justify-center px-4 sm:px-6 py-20">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -71,7 +71,7 @@ export const About: React.FC = () => {
         className="text-center max-w-5xl"
       >
         <motion.h2 
-          className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-16 leading-tight"
+          className="text-4xl sm:text-5xl md:text-7xl font-semibold text-gray-900 dark:text-white mb-16 leading-tight"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
@@ -99,7 +99,7 @@ export const About: React.FC = () => {
             />
             
             <motion.p 
-              className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed font-light"
+              className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed font-light"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.4, delay: 0.5 }}
@@ -122,7 +122,7 @@ export const About: React.FC = () => {
         >
           <a
             href="mailto:aksh11ansh@gmail.com"
-            className="inline-block bg-gradient-to-r from-gradient-purple via-gradient-violet to-gradient-blue text-white font-bold py-3 px-8 rounded-full shadow-lg hover:scale-105 hover:shadow-[0_0_25px_#5D4BEB] transition-all duration-300"
+            className="inline-block bg-gradient-to-r from-gradient-purple via-gradient-violet to-gradient-blue text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:scale-105 hover:shadow-[0_0_25px_#5D4BEB] transition-all duration-300"
           >
             Hire Me
           </a>
@@ -174,7 +174,7 @@ export const About: React.FC = () => {
 
         {/* Social Links - Enhanced Hover Effects with Fast Animations */}
         <motion.div
-          className="mt-8 flex justify-center space-x-4"
+          className="mt-8 flex justify-center space-x-2 sm:space-x-4"
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.8 }}

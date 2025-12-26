@@ -48,7 +48,7 @@ export const Poetry: React.FC = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-6 pt-5 pb-10 relative overflow-hidden">
+    <section className="py-20 px-4 sm:px-6 relative overflow-hidden">
       {/* Enhanced Animated Background */}
       <div className="absolute inset-0">
         <motion.div
@@ -73,7 +73,7 @@ export const Poetry: React.FC = () => {
         className="text-center max-w-5xl relative z-10"
       >
         <motion.h2 
-          className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-16"
+          className="text-4xl sm:text-5xl md:text-7xl font-semibold text-gray-900 dark:text-white mb-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -98,7 +98,7 @@ export const Poetry: React.FC = () => {
             }}
             transition={{ type: 'spring', stiffness: 300, damping: 20 }}
           >
-            <p className="text-2xl md:text-3xl font-light text-gray-700 dark:text-gray-200 leading-relaxed italic">
+            <p className="text-xl sm:text-2xl md:text-3xl font-light text-gray-700 dark:text-gray-200 leading-relaxed italic">
               "{
                 currentQuote
               }"
@@ -107,7 +107,7 @@ export const Poetry: React.FC = () => {
         </motion.div>
 
         {/* Enhanced Refresh Button with Snowflake */}
-        <motion.div className="flex justify-center items-center space-x-6 relative">
+        <motion.div className="flex justify-center items-center space-x-4 sm:space-x-6 relative">
           <motion.button
             onClick={refreshQuote}
             className="group relative p-4 rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 hover:bg-white dark:hover:bg-gray-700 transition-all duration-300 shadow-lg hover:shadow-2xl overflow-hidden z-10"
