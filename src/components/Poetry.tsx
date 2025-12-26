@@ -70,7 +70,7 @@ export const Poetry: React.FC = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
         viewport={{ once: true }}
-        className="text-center max-w-5xl relative z-10"
+        className="text-center max-w-5xl mx-auto relative z-10"
       >
         <motion.h2 
           className="text-4xl sm:text-5xl md:text-7xl font-semibold text-gray-900 dark:text-white mb-16"

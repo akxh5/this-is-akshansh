@@ -46,8 +46,8 @@ const WritingCard: React.FC<{ writing: Writing }> = ({ writing }) => {
             className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
           />
         </div>
-        <div className="p-4 min-h-full">
-          <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-2 leading-tight">
+        <div className="p-4 h-full">
+          <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-2 leading-snug">
             {writing.title}
           </h3>
           {writing.excerpt && (
