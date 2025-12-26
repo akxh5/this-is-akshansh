@@ -71,7 +71,7 @@ export const Projects: React.FC = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          Projects
+          What I Built
         </motion.h2>
 
         <motion.p 
@@ -243,7 +243,7 @@ export const Projects: React.FC = () => {
             whileTap={{ scale: 0.95 }}
           >
             <Github className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
-            <span>View All Projects</span>
+            <span>View All My Builds</span>
             <motion.div
               className="text-lg"
               animate={{ x: [0, 5, 0] }}

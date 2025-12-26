@@ -77,30 +77,9 @@ export const About: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.1 }}
           viewport={{ once: true }}
         >
-          About
+          About Me
         </motion.h2>
         
-        {/* Primary Quote - Optimized for Speed */}
-        <motion.div
-          className="relative mb-12"
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          viewport={{ once: true }}
-        >
-          <div className="relative bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-3xl p-12 shadow-2xl">
-            <motion.p 
-              className="text-3xl md:text-4xl font-light text-gray-800 dark:text-gray-200 leading-relaxed italic"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.4, delay: 0.3 }}
-              viewport={{ once: true }}
-            >
-              "I code the future, but I never forget to feel."
-            </motion.p>
-          </div>
-        </motion.div>
-
         {/* Supporting Bio Text - Faster Animation */}
         <motion.div
           className="max-w-3xl mx-auto"
@@ -131,6 +110,22 @@ export const About: React.FC = () => {
               that echo the human side of me.
             </motion.p>
           </div>
+        </motion.div>
+
+        {/* Hire Me Button */}
+        <motion.div
+          className="mt-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <a
+            href="mailto:aksh11ansh@gmail.com"
+            className="inline-block bg-gradient-to-r from-gradient-purple via-gradient-violet to-gradient-blue text-white font-bold py-3 px-8 rounded-full shadow-lg hover:scale-105 hover:shadow-[0_0_25px_#5D4BEB] transition-all duration-300"
+          >
+            Hire Me
+          </a>
         </motion.div>
 
         {/* Avatar Image with Running Border Light - Optimized */}

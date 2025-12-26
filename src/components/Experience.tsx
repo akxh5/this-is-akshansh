@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { motion, useAnimation } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 
 const images = [
   "1738935069111.jpeg", "1738935077783.jpeg", "1739198701641.jpeg",
@@ -20,8 +20,7 @@ const CarouselContent = () => (
         className="group relative flex-shrink-0 w-64 h-80 mx-4"
         whileHover={{
           scale: 1.05,
-          y: -10, // Slight lift
-          rotateY: '4deg', // Reduced tilt
+          y: -5, // Slight lift
           boxShadow: '0px 15px 25px -10px rgba(0,0,0,0.2)', // Softer shadow
           transition: { type: "spring", stiffness: 300, damping: 20 }
         }}
@@ -43,26 +42,22 @@ const CarouselContent = () => (
   </div>
 );
 
-export const Experience: React.FC = () => {
-  const controls = useAnimation();
-
-  const startAnimation = (duration: number) => {
-    controls.start({
-      x: '-50%',
-      transition: {
-        x: {
-          duration: duration,
-          ease: 'linear',
-          repeat: Infinity,
-          repeatType: 'loop',
-        },
+const carouselVariants = {
+  scroll: (duration: number) => ({
+    x: '-50%',
+    transition: {
+      x: {
+        duration,
+        ease: 'linear',
+        repeat: Infinity,
+        repeatType: 'loop',
       },
-    });
-  };
+    },
+  })
+};
 
-  useEffect(() => {
-    startAnimation(35); // Normal speed
-  }, [controls]);
+export const Experience: React.FC = () => {
+  const [duration, setDuration] = useState(25);
 
   return (
     <section className="py-20 relative w-full overflow-hidden">
@@ -89,13 +84,15 @@ export const Experience: React.FC = () => {
 
       <div
         className="w-full cursor-grab"
-        onMouseEnter={() => startAnimation(70)} // Slow down on hover
-        onMouseLeave={() => startAnimation(35)}   // Resume normal speed
+        onMouseEnter={() => setDuration(50)} // Slow down on hover
+        onMouseLeave={() => setDuration(25)}   // Resume normal speed
       >
         <motion.div
           className="flex flex-nowrap"
-          style={{ width: '200%', willChange: 'transform' }} // Added will-change
-          animate={controls}
+          style={{ width: '200%', willChange: 'transform' }}
+          variants={carouselVariants}
+          animate="scroll"
+          custom={duration}
         >
           <CarouselContent />
           <CarouselContent />

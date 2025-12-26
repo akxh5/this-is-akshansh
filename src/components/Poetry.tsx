@@ -4,6 +4,7 @@ import { Snowflake } from 'lucide-react';
 
 export const Poetry: React.FC = () => {
   const stoicQuotes = [
+    "Throughout Heaven and Earth, I Alone Am The Honored One",
     "The best revenge is not to be like your enemy. - Marcus Aurelius",
     "You have power over your mind - not outside events. Realize this, and you will find strength. - Marcus Aurelius",
     "The happiness of your life depends upon the quality of your thoughts. - Marcus Aurelius",
@@ -11,19 +12,31 @@ export const Poetry: React.FC = () => {
     "It is not what happens to you, but how you react to it that matters. - Epictetus",
     "The only way to deal with an unfree world is to become so absolutely free that your very existence is an act of rebellion. - Camus",
     "Man is disturbed not by things, but by the views he takes of things. - Epictetus",
-    "First say to yourself what you would be; and then do what you have to do. - Epictetus"
+    "First say to yourself what you would be; and then do what you have to do. - Epictetus",
+    "Waste no more time arguing about what a good man should be. Be one. - Marcus Aurelius",
+    "The obstacle is the way. - Ryan Holiday",
+    "If you are distressed by anything external, the pain is not due to the thing itself, but to your estimate of it; and this you have the power to revoke at any moment. - Marcus Aurelius",
+    "He who is brave is free. - Seneca",
+    "A gem cannot be polished without friction, nor a man perfected without trials. - Seneca",
+    "I am not a product of my circumstances. I am a product of my decisions. - Stephen Covey",
+    "Innovation distinguishes between a leader and a follower. - Steve Jobs",
+    "If your actions inspire others to dream more, learn more, do more and become more, you are a leader. - John Quincy Adams",
+    "The pessimist complains about the wind; the optimist expects it to change; the leader adjusts the sails. - John Maxwell"
   ];
 
   const [currentQuote, setCurrentQuote] = useState('');
   const [isRefreshing, setIsRefreshing] = useState(false);
 
   const getRandomQuote = () => {
-    const randomIndex = Math.floor(Math.random() * stoicQuotes.length);
-    return stoicQuotes[randomIndex];
+    // Pick from the array starting from the second element
+    const quotesForRandom = stoicQuotes.slice(1);
+    const randomIndex = Math.floor(Math.random() * quotesForRandom.length);
+    return quotesForRandom[randomIndex];
   };
 
   useEffect(() => {
-    setCurrentQuote(getRandomQuote());
+    // Always start with the first quote
+    setCurrentQuote(stoicQuotes[0]);
   }, []);
 
   const refreshQuote = () => {
@@ -35,7 +48,7 @@ export const Poetry: React.FC = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-6 py-20 relative overflow-hidden">
+    <section className="min-h-screen flex items-center justify-center px-6 pt-5 pb-10 relative overflow-hidden">
       {/* Enhanced Animated Background */}
       <div className="absolute inset-0">
         <motion.div
@@ -51,40 +64,6 @@ export const Poetry: React.FC = () => {
           transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
         />
       </div>
-
-      {/* Floating Wisdom Particles */}
-      {/* <div className="absolute inset-0 pointer-events-none">
-        {[...Array(15)].map((_, i) => (
-          <motion.div
-            key={`wisdom-particle-${i}`}
-            className="absolute rounded-full opacity-20"
-            style={{
-              width: `${4 + Math.random() * 8}px`,
-              height: `${4 + Math.random() * 8}px`,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              background: i % 3 === 0 
-                ? 'linear-gradient(45deg, rgba(147, 51, 234, 0.6), rgba(59, 130, 246, 0.6))'
-                : i % 3 === 1
-                ? 'linear-gradient(45deg, rgba(59, 130, 246, 0.6), rgba(16, 185, 129,.3))'
-                : 'linear-gradient(45deg, rgba(16, 185, 129, 0.6), rgba(147, 51, 234, 0.6))'
-            }}
-            animate={{
-              y: [-25, 25, -25],
-              x: [-15, 15, -15],
-              opacity: [0.2, 0.6, 0.2],
-              scale: [1, 1.4, 1],
-              rotate: [0, 180, 360]
-            }}
-            transition={{
-              duration: 12 + Math.random() * 8,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: Math.random() * 6
-            }}
-          />
-        ))}
-      </div> */}
       
       <motion.div
         initial={{ opacity: 0, y: 50 }}
@@ -103,7 +82,6 @@ export const Poetry: React.FC = () => {
           Philosophy
         </motion.h2>
 
-        {/* Enhanced Quote Display with Morphing Background */}
         <motion.div
           className="relative mb-12"
           key={currentQuote}
@@ -111,82 +89,21 @@ export const Poetry: React.FC = () => {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="relative">
-            {/* Morphing Background Effect */}
-            <motion.div
-              className="absolute inset-0 rounded-3xl blur-2xl opacity-20"
-              animate={{
-                background: [
-                  'linear-gradient(45deg, rgba(147, 51, 234, 0.3), rgba(59, 130, 246, 0.3))',
-                  'linear-gradient(45deg, rgba(59, 130, 246, 0.3), rgba(16, 185, 129, 0.3))',
-                  'linear-gradient(45deg, rgba(16, 185, 129, 0.3), rgba(147, 51, 234, 0.3))',
-                  'linear-gradient(45deg, rgba(147, 51, 234, 0.3), rgba(59, 130, 246, 0.3))'
-                ],
-                scale: [1, 1.05, 1],
-                rotate: [0, 2, -2, 0]
-              }}
-              transition={{
-                duration: 8,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            />
-
-            {/* Main Quote Card */}
-            <motion.div
-              className="relative p-12 rounded-3xl bg-white/60 dark:bg-gray-900/60 backdrop-blur-xl border border-gray-200/30 dark:border-gray-700/30 shadow-2xl overflow-hidden"
-              whileHover={{ 
-                scale: 1.02,
-                boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.15)"
-              }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
-            >
-              {/* Quote Text with Enhanced Typography */}
-              <motion.p 
-                className="text-2xl md:text-4xl font-light text-gray-700 dark:text-gray-300 leading-relaxed italic relative z-10"
-                whileHover={{ 
-                  textShadow: "0 0 30px rgba(147, 51, 234, 0.4)"
-                }}
-                transition={{ duration: 0.3 }}
-                animate={{
-                  backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
-                }}
-                style={{
-                  backgroundImage: 'linear-gradient(90deg, transparent, rgba(147, 51, 234, 0.1), transparent)',
-                  backgroundSize: '200% 100%'
-                }}
-              >
-                "{currentQuote}"
-              </motion.p>
-              
-              {/* Enhanced Decorative Elements */}
-              <motion.div 
-                className="absolute top-6 left-6 w-8 h-8 border-l-2 border-t-2 border-purple-300/50 dark:border-purple-600/50"
-                animate={{
-                  opacity: [0.5, 1, 0.5],
-                  scale: [1, 1.1, 1]
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
-              <motion.div 
-                className="absolute bottom-6 right-6 w-8 h-8 border-r-2 border-b-2 border-blue-300/50 dark:border-blue-600/50"
-                animate={{
-                  opacity: [0.5, 1, 0.5],
-                  scale: [1, 1.1, 1]
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 1.5
-                }}
-              />
-            </motion.div>
-          </div>
+          <motion.div
+            className="relative p-8 md:p-12 rounded-2xl bg-white/90 dark:bg-gray-800/60 backdrop-blur-lg border border-gray-200/50 dark:border-gray-700/50 shadow-xl"
+            whileHover={{
+              scale: 1.03,
+              y: -5,
+              boxShadow: "0 20px 40px -10px rgba(0, 0, 0, 0.2)"
+            }}
+            transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+          >
+            <p className="text-2xl md:text-3xl font-light text-gray-700 dark:text-gray-200 leading-relaxed italic">
+              "{
+                currentQuote
+              }"
+            </p>
+          </motion.div>
         </motion.div>
 
         {/* Enhanced Refresh Button with Snowflake */}
@@ -213,10 +130,10 @@ export const Poetry: React.FC = () => {
             />
             
             <motion.div
-              animate={{ 
+              animate={{
                 rotate: isRefreshing ? 360 : 0
               }}
-              transition={{ 
+              transition={{
                 duration: 0.5,
                 repeat: isRefreshing ? Infinity : 0,
                 ease: "linear"

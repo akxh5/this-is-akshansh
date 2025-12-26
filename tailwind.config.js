@@ -30,7 +30,10 @@ export default {
         apple: {
           gray: '#1d1d1f',
           'gray-light': '#f5f5f7',
-        }
+        },
+        'gradient-purple': '#7C3DEA',
+        'gradient-violet': '#5D4BEB',
+        'gradient-blue': '#2559CD',
       }
     },
   },

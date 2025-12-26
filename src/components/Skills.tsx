@@ -41,7 +41,7 @@ export const Skills: React.FC = () => {
   ];
 
   return (
-    <section className="min-h-screen py-20 px-6 flex items-center relative overflow-visible">
+    <section className="py-20 px-6 flex items-center relative overflow-visible">
       {/* Animated Background */}
       <motion.div
         className="absolute inset-0 opacity-20"
