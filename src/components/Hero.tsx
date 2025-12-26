@@ -24,7 +24,7 @@ export const Hero: React.FC = () => {
       />
 
       {/* Floating Particles */}
-      <div className="absolute inset-0 pointer-events-none">
+      {/* <div className="absolute inset-0 pointer-events-none">
         {[...Array(12)].map((_, i) => (
           <motion.div
             key={i}
@@ -47,10 +47,10 @@ export const Hero: React.FC = () => {
             }}
           />
         ))}
-      </div>
+      </div> */}
 
       {/* Larger Floating Orbs */}
-      <div className="absolute inset-0 pointer-events-none">
+      {/* <div className="absolute inset-0 pointer-events-none">
         {[...Array(6)].map((_, i) => (
           <motion.div
             key={`orb-${i}`}
@@ -78,7 +78,7 @@ export const Hero: React.FC = () => {
             }}
           />
         ))}
-      </div>
+      </div> */}
 
       <motion.div
         initial={{ opacity: 0, y: 50 }}

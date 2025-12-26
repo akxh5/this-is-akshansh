@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { RefreshCw } from 'lucide-react';
+import { Snowflake } from 'lucide-react';
 
 export const Poetry: React.FC = () => {
   const stoicQuotes = [
@@ -53,7 +53,7 @@ export const Poetry: React.FC = () => {
       </div>
 
       {/* Floating Wisdom Particles */}
-      <div className="absolute inset-0 pointer-events-none">
+      {/* <div className="absolute inset-0 pointer-events-none">
         {[...Array(15)].map((_, i) => (
           <motion.div
             key={`wisdom-particle-${i}`}
@@ -66,7 +66,7 @@ export const Poetry: React.FC = () => {
               background: i % 3 === 0 
                 ? 'linear-gradient(45deg, rgba(147, 51, 234, 0.6), rgba(59, 130, 246, 0.6))'
                 : i % 3 === 1
-                ? 'linear-gradient(45deg, rgba(59, 130, 246, 0.6), rgba(16, 185, 129, 0.6))'
+                ? 'linear-gradient(45deg, rgba(59, 130, 246, 0.6), rgba(16, 185, 129,.3))'
                 : 'linear-gradient(45deg, rgba(16, 185, 129, 0.6), rgba(147, 51, 234, 0.6))'
             }}
             animate={{
@@ -84,7 +84,7 @@ export const Poetry: React.FC = () => {
             }}
           />
         ))}
-      </div>
+      </div> */}
       
       <motion.div
         initial={{ opacity: 0, y: 50 }}
@@ -141,22 +141,6 @@ export const Poetry: React.FC = () => {
               }}
               transition={{ duration: 0.4, ease: "easeOut" }}
             >
-              {/* Animated Border Glow */}
-              <motion.div
-                className="absolute inset-0 rounded-3xl"
-                style={{
-                  background: 'linear-gradient(45deg, transparent, rgba(147, 51, 234, 0.1), transparent, rgba(59, 130, 246, 0.1), transparent)'
-                }}
-                animate={{
-                  rotate: [0, 360]
-                }}
-                transition={{
-                  duration: 20,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-              />
-
               {/* Quote Text with Enhanced Typography */}
               <motion.p 
                 className="text-2xl md:text-4xl font-light text-gray-700 dark:text-gray-300 leading-relaxed italic relative z-10"
@@ -205,20 +189,8 @@ export const Poetry: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* Enhanced Refresh Button with Orbital Animation */}
+        {/* Enhanced Refresh Button with Snowflake */}
         <motion.div className="flex justify-center items-center space-x-6 relative">
-          {/* Orbital Rings */}
-          <motion.div
-            className="absolute w-20 h-20 border border-purple-200/30 dark:border-purple-800/30 rounded-full"
-            animate={{ rotate: 360 }}
-            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-          />
-          <motion.div
-            className="absolute w-16 h-16 border border-blue-200/30 dark:border-blue-800/30 rounded-full"
-            animate={{ rotate: -360 }}
-            transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-          />
-
           <motion.button
             onClick={refreshQuote}
             className="group relative p-4 rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 hover:bg-white dark:hover:bg-gray-700 transition-all duration-300 shadow-lg hover:shadow-2xl overflow-hidden z-10"
@@ -242,16 +214,16 @@ export const Poetry: React.FC = () => {
             
             <motion.div
               animate={{ 
-                rotate: isRefreshing ? 360 : 0,
-                scale: isRefreshing ? [1, 1.2, 1] : 1
+                rotate: isRefreshing ? 360 : 0
               }}
               transition={{ 
-                duration: isRefreshing ? 0.5 : 0,
-                scale: { duration: 0.5, repeat: isRefreshing ? Infinity : 0 }
+                duration: 0.5,
+                repeat: isRefreshing ? Infinity : 0,
+                ease: "linear"
               }}
               className="relative z-10"
             >
-              <RefreshCw className="w-6 h-6 text-gray-600 dark:text-gray-300 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-300" />
+              <Snowflake className="w-6 h-6 text-gray-600 dark:text-gray-300 group-hover:text-blue-400 dark:group-hover:text-blue-300 transition-colors duration-300" />
             </motion.div>
           </motion.button>
           

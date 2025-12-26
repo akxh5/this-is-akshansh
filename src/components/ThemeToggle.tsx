@@ -1,16 +1,19 @@
 import React from 'react';
 import { Sun, Moon } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useTheme } from '../hooks/useTheme';
 
-interface ThemeToggleProps {
-  isDark: boolean;
-  toggleTheme: () => void;
-}
+export const ThemeToggle: React.FC = () => {
+  const { isDark, toggleTheme } = useTheme();
 
-export const ThemeToggle: React.FC<ThemeToggleProps> = ({ isDark, toggleTheme }) => {
+  const handleClick = () => {
+    console.log('ThemeToggle clicked');
+    toggleTheme();
+  };
+
   return (
     <motion.button
-      onClick={toggleTheme}
+      onClick={handleClick}
       className="fixed top-6 right-6 z-50 p-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all duration-300"
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}

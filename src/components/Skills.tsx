@@ -25,6 +25,8 @@ export const Skills: React.FC = () => {
     // Blockchain
     { name: "Solidity", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/solidity/solidity-original.svg", category: "blockchain" },
     { name: "Ethereum", icon: "https://cryptologos.cc/logos/ethereum-eth-logo.svg", category: "blockchain" },
+    { name: "Solana", icon: "/solanalogo.svg", category: "blockchain" },
+    { name: "Rust", icon: "/Rust.svg", category: "blockchain" },
     
     // Tools
     { name: "Git", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg", category: "tools" },
@@ -55,7 +57,7 @@ export const Skills: React.FC = () => {
       />
 
       {/* Floating Tech Particles */}
-      <div className="absolute inset-0 pointer-events-none">
+      {/* <div className="absolute inset-0 pointer-events-none">
         {[...Array(8)].map((_, i) => (
           <motion.div
             key={`tech-particle-${i}`}
@@ -78,7 +80,7 @@ export const Skills: React.FC = () => {
             }}
           />
         ))}
-      </div>
+      </div> */}
 
       <div className="max-w-6xl mx-auto w-full relative z-10 bg-transparent">
         <motion.div
