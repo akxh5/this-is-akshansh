@@ -1,3 +1,5 @@
+import { GlowingEffect } from '@/components/ui/glowing-effect';
+import { cn } from '@/lib/utils';
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Snowflake } from 'lucide-react';
@@ -89,21 +91,38 @@ export const Poetry: React.FC = () => {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.8 }}
         >
-          <motion.div
-            className="relative p-8 md:p-12 rounded-2xl bg-white/90 dark:bg-gray-800/60 backdrop-blur-lg border border-gray-200/50 dark:border-gray-700/50 shadow-xl"
-            whileHover={{
-              scale: 1.03,
-              y: -5,
-              boxShadow: "0 20px 40px -10px rgba(0, 0, 0, 0.2)"
-            }}
-            transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-          >
-            <p className="text-xl sm:text-2xl md:text-3xl font-light text-gray-700 dark:text-gray-200 leading-relaxed italic">
-              "{
-                currentQuote
-              }"
-            </p>
-          </motion.div>
+          <div className="relative h-full list-none">
+            {/* Outer container handles the border and relative positioning */}
+            <div className="relative h-full rounded-[1.25rem] border-[0.75px] border-border p-2 md:rounded-[1.5rem] md:p-3">
+              
+              {/* The Glow Primitive - Configured for hover proximity */}
+              <GlowingEffect
+                spread={40}
+                glow={true}
+                disabled={false}
+                proximity={64}
+                inactiveZone={0.01}
+                borderWidth={3}
+              />
+
+              {/* INNER CONTENT: This is where your existing project data goes */}
+              <motion.div
+                className="relative p-8 md:p-12 rounded-2xl bg-white/90 dark:bg-gray-800/60 backdrop-blur-lg border border-gray-200/50 dark:border-gray-700/50 shadow-xl"
+                whileHover={{
+                  scale: 1.03,
+                  y: -5,
+                  boxShadow: "0 20px 40px -10px rgba(0, 0, 0, 0.2)"
+                }}
+                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+              >
+                <p className="text-xl sm:text-2xl md:text-3xl font-light text-gray-700 dark:text-gray-200 leading-relaxed italic">
+                  "{
+                    currentQuote
+                  }"
+                </p>
+              </motion.div>
+            </div>
+          </div>
         </motion.div>
 
         {/* Enhanced Refresh Button with Snowflake */}

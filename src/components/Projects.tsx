@@ -1,3 +1,5 @@
+import { GlowingEffect } from "@/components/ui/glowing-effect";
+import { cn } from "@/lib/utils";
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, Github } from 'lucide-react';
@@ -10,6 +12,7 @@ interface Project {
   liveUrl?: string;
   githubUrl?: string;
   status: 'live' | 'development' | 'coming-soon';
+  tags?: string[];
 }
 
 export const Projects: React.FC = () => {
@@ -86,143 +89,98 @@ export const Projects: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {projects.map((project, index) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="group relative"
-            >
-              {/* Hover Glow Effect */}
-              <div className={`absolute inset-0 bg-gradient-to-r ${project.color} rounded-3xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500`}></div>
-              
-              <motion.div
-                className="relative bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-3xl p-6 sm:p-8 h-full hover:shadow-2xl transition-all duration-500 overflow-hidden"
-                whileHover={{ y: -10, scale: 1.02 }}
-              >
-                {/* Header with Emoji and Status */}
-                <div className="flex items-start justify-between mb-6">
-                  <div className="flex items-center space-x-4">
-                    <motion.div
-                      className="text-4xl"
-                      whileHover={{ scale: 1.2, rotate: 10 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      {project.emoji}
-                    </motion.div>
-                    <div className={`px-3 py-1 rounded-full text-xs font-medium ${getStatusBadge(project.status).color}`}>
-                      {getStatusBadge(project.status).text}
+            <div key={index} className="relative h-full list-none">
+              {/* Outer container handles the border and relative positioning */}
+              <div className="relative h-full rounded-[1.25rem] border-[0.75px] border-border p-2 md:rounded-[1.5rem] md:p-3">
+                
+                {/* The Glow Primitive - Configured for hover proximity */}
+                <GlowingEffect
+                  spread={40}
+                  glow={true}
+                  disabled={false}
+                  proximity={64}
+                  inactiveZone={0.01}
+                  borderWidth={3}
+                />
+
+                {/* INNER CONTENT: This is where your existing project data goes */}
+                <div className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl border-[0.75px] bg-background p-6 shadow-sm dark:shadow-[0px_0px_27px_0px_rgba(45,45,45,0.3)]"
+                  whileHover={{
+                    scale: 1.03,
+                    y: -5,
+                    boxShadow: "0 20px 40px -10px rgba(0, 0, 0, 0.2)"
+                  }}
+                  transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                >
+                  <div className="flex items-start justify-between">
+                    <div className="flex items-center space-x-4">
+                      <motion.div
+                        className="text-4xl"
+                        whileHover={{ scale: 1.2, rotate: 10 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        {project.emoji}
+                      </motion.div>
+                      <div className={`px-3 py-1 rounded-full text-xs font-medium ${getStatusBadge(project.status).color}`}>
+                        {getStatusBadge(project.status).text}
+                      </div>
+                    </div>
+                    
+                    {/* Action Buttons */}
+                    <div className="flex space-x-2">
+                      {project.liveUrl && (
+                        <motion.a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
+                          whileHover={{ scale: 1.1, rotate: 45 }}
+                          whileTap={{ scale: 0.95 }}
+                          title="View Live"
+                        >
+                          <ExternalLink className="w-4 h-4 text-gray-600 dark:text-gray-300" />
+                        </motion.a>
+                      )}
+                      {project.githubUrl && (
+                        <motion.a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.95 }}
+                          title="View Code"
+                        >
+                          <Github className="w-4 h-4 text-gray-600 dark:text-gray-300" />
+                        </motion.a>
+                      )}
                     </div>
                   </div>
-                  
-                  {/* Action Buttons */}
-                  <div className="flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    {project.liveUrl && (
-                      <motion.a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
-                        whileHover={{ scale: 1.1, rotate: 45 }}
-                        whileTap={{ scale: 0.95 }}
-                        title="View Live"
-                      >
-                        <ExternalLink className="w-4 h-4 text-gray-600 dark:text-gray-300" />
-                      </motion.a>
-                    )}
-                    {project.githubUrl && (
-                      <motion.a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.95 }}
-                        title="View Code"
-                      >
-                        <Github className="w-4 h-4 text-gray-600 dark:text-gray-300" />
-                      </motion.a>
-                    )}
-                  </div>
-                </div>
-                
-                {/* Project Title */}
-                <motion.h3 
-                  className="text-2xl font-semibold text-gray-800 dark:text-white mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-600 group-hover:to-blue-600 transition-all duration-300"
-                  whileHover={{ scale: 1.05 }}
-                >
-                  {project.title}
-                </motion.h3>
-                
-                {/* Project Description */}
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm font-normal">
-                  {project.description}
-                </p>
-
-                {/* Animated Border - Now properly curved with SVG */}
-                <motion.div
-                  className="absolute inset-0 pointer-events-none"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ duration: 1, delay: index * 0.1 + 0.5 }}
-                  viewport={{ once: true }}
-                >
-                  <svg
-                    className="absolute inset-0 w-full h-full"
-                    viewBox="0 0 100 100"
-                    preserveAspectRatio="none"
-                  >
-                    <defs>
-                      <linearGradient id={`gradient-${index}`} x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stopColor={project.color.includes('purple') ? '#8b5cf6' : 
-                                                   project.color.includes('blue') ? '#3b82f6' :
-                                                   project.color.includes('indigo') ? '#6366f1' :
-                                                   project.color.includes('emerald') ? '#10b981' : '#8b5cf6'} />
-                        <stop offset="100%" stopColor={project.color.includes('pink') ? '#ec4899' :
-                                                      project.color.includes('teal') ? '#14b8a6' :
-                                                      project.color.includes('purple') ? '#8b5cf6' :
-                                                      project.color.includes('teal') ? '#14b8a6' : '#ec4899'} />
-                      </linearGradient>
-                    </defs>
-                    <motion.rect
-                      x="0"
-                      y="96"
-                      width="100"
-                      height="4"
-                      rx="2"
-                      ry="2"
-                      fill={`url(#gradient-${index})`}
-                      initial={{ width: 0 }}
-                      whileInView={{ width: 100 }}
-                      transition={{ duration: 1, delay: index * 0.1 + 0.5 }}
-                      viewport={{ once: true }}
-                    />
-                  </svg>
-                </motion.div>
-
-                {/* Hover Overlay for Coming Soon */}
-                {project.status === 'coming-soon' && (
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-blue-500/10 rounded-3xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    whileHover={{ scale: 1.02 }}
-                  >
-                    <div className="text-center">
-                      <motion.div
-                        className="text-3xl mb-2"
-                        animate={{ rotate: [0, 10, -10, 0] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                      >
-                        🔮
-                      </motion.div>
-                      <p className="text-sm font-medium text-purple-600 dark:text-purple-400">
-                        Coming Soon
+                  <div className="relative flex flex-1 flex-col justify-between gap-3">
+                    
+                    {/* RETAIN YOUR DATA HERE: Title, Description, Image, etc. */}
+                    <div className="space-y-3">
+                      <h3 className="text-xl font-semibold text-foreground">
+                        {project.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground">
+                        {project.description}
                       </p>
                     </div>
-                  </motion.div>
-                )}
-              </motion.div>
-            </motion.div>
+
+                    {/* If you have tech tags or links, keep them here */}
+                    <div className="flex gap-2">
+                      {project.tags?.map((tag: string) => (
+                        <span key={tag} className="text-xs bg-muted px-2 py-1 rounded">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
 
