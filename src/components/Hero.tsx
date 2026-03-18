@@ -1,84 +1,19 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
-
+import { BackgroundPaths } from './ui/background-paths';
 export const Hero: React.FC = () => {
   const scrollToAbout = () => {
     document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center relative px-4 sm:px-6 overflow-hidden">
-      {/* Animated Background Gradients */}
-      <motion.div
-        className="absolute inset-0 opacity-30"
-        animate={{
-          background: [
-            'radial-gradient(circle at 20% 50%, rgba(147, 51, 234, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%)',
-            'radial-gradient(circle at 80% 50%, rgba(147, 51, 234, 0.15) 0%, transparent 50%), radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 50%)',
-            'radial-gradient(circle at 50% 20%, rgba(147, 51, 234, 0.1) 0%, transparent 50%), radial-gradient(circle at 50% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%)',
-            'radial-gradient(circle at 20% 50%, rgba(147, 51, 234, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%)'
-          ]
-        }}
-        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-      />
+    <section className="min-h-screen flex flex-col justify-center items-center relative isolate px-4 sm:px-6 overflow-hidden">
+      {/* Background Layer */}
+      <BackgroundPaths className="-z-10" />
 
-      {/* Floating Particles */}
-      {/* <div className="absolute inset-0 pointer-events-none">
-        {[...Array(12)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-2 h-2 bg-gradient-to-r from-purple-400 to-blue-400 rounded-full opacity-20"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`
-            }}
-            animate={{
-              y: [-20, -40, -20],
-              x: [-10, 10, -10],
-              opacity: [0.2, 0.6, 0.2],
-              scale: [1, 1.5, 1]
-            }}
-            transition={{
-              duration: 8 + Math.random() * 4,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: Math.random() * 5
-            }}
-          />
-        ))}
-      </div> */}
-
-      {/* Larger Floating Orbs */}
-      {/* <div className="absolute inset-0 pointer-events-none">
-        {[...Array(6)].map((_, i) => (
-          <motion.div
-            key={`orb-${i}`}
-            className="absolute rounded-full blur-xl opacity-10"
-            style={{
-              width: `${60 + Math.random() * 40}px`,
-              height: `${60 + Math.random() * 40}px`,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              background: i % 2 === 0 
-                ? 'linear-gradient(45deg, rgba(147, 51, 234, 0.3), rgba(59, 130, 246, 0.3))'
-                : 'linear-gradient(45deg, rgba(59, 130, 246, 0.3), rgba(147, 51, 234, 0.3))'
-            }}
-            animate={{
-              y: [-30, 30, -30],
-              x: [-20, 20, -20],
-              scale: [1, 1.2, 1],
-              rotate: [0, 180, 360]
-            }}
-            transition={{
-              duration: 15 + Math.random() * 10,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: Math.random() * 8
-            }}
-          />
-        ))}
-      </div> */}
+      {/* Full-Page Apple Liquid Glass Overlay */}
+      <div className="absolute inset-0 pointer-events-none z-0 bg-white/10 dark:bg-black/20 backdrop-blur-md" />
 
       <motion.div
         initial={{ opacity: 0, y: 50 }}
